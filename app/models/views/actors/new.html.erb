@@ -1,0 +1,27 @@
+<h1 align="center"> Nuevo Actor </h1>
+
+<%= form_for @actor do |f| %>
+  <div align="center">
+    <%= f.label(:image_url, "Url de imagen: ") %>
+    <%= f.text_field(:image_url) %>
+
+    <%= f.label(:name, "Nombre: ") %>
+    <%= f.text_field(:name) %>
+
+    <%= f.label(:bio, "Biografia: ") %>
+    <%= f.text_area(:bio) %>
+    <br>
+    <%= f.label(:birth_date, "Fecha de nacimiento: ") %>
+    <%= f.text_field(:birth_date) %>
+
+    <%= f.label(:birth_place, "Lugar de nacimiento: ") %>
+    <%= f.text_field(:birth_place) %>
+
+    <br>
+    <br>
+
+    <%= f.submit("Crear") %>
+  </div>
+
+
+<% end %>

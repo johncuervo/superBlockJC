@@ -10,12 +10,15 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="alert alert-info"><%= flash[:notice] %></div>
-    <% end %>
-
     <%= render 'layouts/navbar' %>
 
+    <%= render 'layouts/alerts' %>
+
     <%= yield %>
+
+    <script>
+      $(".alert").fadeIn(500).css("opacity", "0.85").delay(5000).slideUp(900);
+      $(".alerts").on('click', '.alert', function(){ $(this).remove() });
+    </script>
   </body>
 </html>
