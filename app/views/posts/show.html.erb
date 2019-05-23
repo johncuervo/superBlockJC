@@ -2,7 +2,27 @@
   <div class="row">
     <div class="col-sm-12">
       <h1><%= @post.title %></h1>
-      <p><%= @post.content %></p>
+      <p><%= markdown(@post.content) %></p>
+    </div>
+    <div class="comments">
+      <h2>Comentarios</h2>
+      <% @post.comments.each do |comment| %>
+        <div class="panel panel-default">
+          <div class="panel-body"><%= comment.content %></div>
+        </div>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= form_for [@post, @post.comments.build] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, class: "form-control", placeholder: "Agregar comentario" %>
+          </div>
+
+          <div class="actions text-right">
+            <%= f.submit "Comentar", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
