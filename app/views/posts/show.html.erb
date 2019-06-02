@@ -1,28 +1,41 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1><%= @post.title %></h1>
-      <p><%= markdown(@post.content) %></p>
-    </div>
-    <div class="comments">
-      <h2>Comentarios</h2>
-      <% @post.comments.each do |comment| %>
-        <div class="panel panel-default">
-          <div class="panel-body"><%= comment.content %></div>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="post">
+        <div>
+          <h1 align="center"><%= @post.title %></h1>
+          <p><%= markdown(@post.content) %></p>
         </div>
-      <% end %>
+        <hr>
+        <br>
+        <div class="comments">
+          <h2>Comentarios</h2>
+          <br>
+          <% @post.comments.each do |comment| %>
+            <div class="panel panel-default">
+              <%= image_tag gravatar_url(comment.user.email , 26), alt: "" %> <strong><%=comment.user.email%></strong>
+              <div class="panel-body">
+                <%= comment.content %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
 
-      <% if user_signed_in? %>
-        <%= form_for [@post, @post.comments.build] do |f| %>
-          <div class="form-group">
-            <%= f.text_area :content, class: "form-control", placeholder: "Agregar comentario" %>
-          </div>
+          <% if user_signed_in? %>
+            <%= form_for [@post, @post.comments.build] do |f| %>
+              <div class="form-group">
+                <%= f.text_area :content, class: "form-control", placeholder: "Agregar comentario" %>
+              </div>
 
-          <div class="actions text-right">
-            <%= f.submit "Comentar", class: "btn btn-primary" %>
+              <div class="actions text-right">
+                <%= f.submit "Comentar" %>
+              </div>
+            <% end %>
+          <% end %>
+          <p><%= link_to "Inicio", posts_path, class: "enlace" %></p>
           </div>
-        <% end %>
-      <% end %>
+      </div>
+
     </div>
   </div>
 </div>

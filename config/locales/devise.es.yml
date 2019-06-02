@@ -1,3 +1,5 @@
+# Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
+
 es:
   devise:
     confirmations:
@@ -59,4 +61,9 @@ es:
       not_locked: "no ha sido bloqueada"
       not_saved:
         one: "Ha ocurrido 1 error:"
-  other: "Han ocurrido %{count} errores:"
+        other: "Han ocurrido %{count} errores:"
+  activerecord:
+    attributes:
+      user:
+        encrypted_password: "Confirmar contraseña"
+        password: "Contraseña"

@@ -1,11 +1,12 @@
 <% if user_signed_in? %>
 	<ul class="navbar-nav ml-auto">
-    <li class="nav-link"><%= link_to "Nuevo Post", new_post_path, class: "btn btn-dark"  %></li>
-    <li class="nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+		<li class="nav-link"><%= image_tag gravatar_url(current_user.email, 26), alt: "" %></li>
+		<li class="nav-link"><%= link_to "Nuevo Post", new_post_path, class: "links" %></li>
+    <li class="nav-link"><%= link_to "Salir", destroy_user_session_path, method: :delete, class: "links" %></li>
   </ul>
 <% else %>
 	<ul class="navbar-nav ml-auto">
-  	<li class="nav-link"><%= link_to "Login", new_user_session_path %></li>
-  	<li class="nav-link"><%= link_to "Register", new_user_registration_path %></li>
+  	<li class="nav-link"><%= link_to "Ingresar", new_user_session_path, class: "links" %></li>
+  	<li class="nav-link"><%= link_to "Registrarse", new_user_registration_path, class: "links" %></li>
   </ul>
 <% end %>
