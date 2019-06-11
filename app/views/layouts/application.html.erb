@@ -12,15 +12,18 @@
   <body>
     <%= render 'layouts/navbar' %>
 
-    <%= render 'layouts/alerts' %>
 
-    <%= yield %>
+    <div class="contenedor">
+      <%= render 'layouts/alerts' %>
+      <%= yield %>
+    </div>
+
 
     <!-- <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; SuperBlog 2019</p>
       </div>
-      
+
     </footer>-->
 
     <script>
