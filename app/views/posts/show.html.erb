@@ -10,21 +10,21 @@
         <br>
         <div class="comments">
           <h2>Comentarios</h2>
-          <br>
-          <% @post.comments.each do |comment| %>
-            <div class="panel panel-default">
-              <%= image_tag gravatar_url(comment.user.email , 26), alt: "" %> <strong><%=comment.user.email%></strong>
-              <div class="panel-body">
-                <%= comment.content %>
-              </div>
-            </div>
-            <hr>
-          <% end %>
+          <hr>
+
+          <%= render 'comments/list' %>
+
+          <div class="panel panel-default" id="comments">
+
+          </div>
 
           <% if user_signed_in? %>
-            <%= form_for [@post, @post.comments.build] do |f| %>
+            <%= form_for [@comment], :remote => true do |f| %>
+
               <div class="form-group">
-                <%= f.text_area :content, class: "form-control", placeholder: "Agregar comentario" %>
+                <%= f.text_area :content, class: "form-control", id:"comment-box", placeholder: "Agregar comentario" %>
+                <%= hidden_field_tag "comment[post_id]", @post.id %>
+                <%= hidden_field_tag "comment[user_id]", current_user.id %>
               </div>
 
               <div class="actions text-right">

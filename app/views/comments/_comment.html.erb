@@ -1,0 +1,11 @@
+<%= image_tag gravatar_url(comment.user.email , 26), alt: "" %> <strong><%=comment.user.email%></strong>
+<br>
+<br>
+<div class="panel-body">
+  <%= comment.content %>
+</div>
+<% if user_signed_in? && current_user.id == comment.user_id %>
+  <%= link_to "Eliminar", comment, method: :delete, data: { confirm: "¿Estás seguro de eliminar el Comentario?" }, class: "enlace float-right" %>
+<% end %>
+<br>
+<hr style="color: black; background-color: black; height: 0.1em;" />
