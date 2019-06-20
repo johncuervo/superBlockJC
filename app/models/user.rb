@@ -21,4 +21,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   validates :email, :encrypted_password, presence: true
+
+  def username
+    self.email.split('@')[0]
+  end
 end

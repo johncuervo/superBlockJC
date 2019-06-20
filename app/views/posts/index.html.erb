@@ -6,7 +6,7 @@
         <h3 class="mt-4" align="center"><%= link_to post.title, post, class: "enlace" %></h3>
         <div class="lead">
           Por
-          <%= link_to post.user.email, post, class: "enlace" %>
+          <%= link_to post.user.username, post, class: "enlace" %>
           <h6>Hace <%= time_ago_in_words(post.created_at)%></h6>
         </div>
         <hr>

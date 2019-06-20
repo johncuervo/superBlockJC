@@ -10,24 +10,12 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.js # renders create.js.erb
-      else
         format.js
+      else
+        # format.js
       end
     end
   end
-
-  def edit
-  end
-
-  # def update
-  #   if @comment.update (comment_params)
-  #     flash[:notice] = "Comentario editado exitosamente."
-  #     redirect_to post_path(id: params[:comment][:post_id])
-  #   else
-  #     render post
-  #   end
-  # end
 
   def destroy
 

@@ -14,26 +14,30 @@
 
           <%= render 'comments/list' %>
 
-          <div class="panel panel-default" id="comments">
+          <div id="comments">
 
           </div>
 
           <% if user_signed_in? %>
+
             <%= form_for [@comment], :remote => true do |f| %>
 
-              <div class="form-group">
-                <%= f.text_area :content, class: "form-control", id:"comment-box", placeholder: "Agregar comentario" %>
-                <%= hidden_field_tag "comment[post_id]", @post.id %>
-                <%= hidden_field_tag "comment[user_id]", current_user.id %>
-              </div>
+            <div class="form-group">
+              <%= f.text_area :content, class: "form-control", id:"comment-box", placeholder: "Agregar comentario" %>
+              <%= hidden_field_tag "comment[post_id]", @post.id %>
+              <%= hidden_field_tag "comment[user_id]", current_user.id %>
+            </div>
 
-              <div class="actions text-right">
-                <%= f.submit "Comentar" %>
-              </div>
+            <div class="actions text-right">
+              <%= f.submit "Comentar" %>
+
+            </div>
             <% end %>
           <% end %>
+
           <p><%= link_to "Inicio", posts_path, class: "enlace" %></p>
-          </div>
+
+        </div>
       </div>
 
     </div>
